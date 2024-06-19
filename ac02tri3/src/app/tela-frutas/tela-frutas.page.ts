@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class TelaFrutasPage implements OnInit {
 
   frutasParaPlantar: any[] = [];
+  mediaTemp: any;
 
   constructor(private router: Router, private activatedRout: ActivatedRoute) { }
 
@@ -21,6 +22,10 @@ export class TelaFrutasPage implements OnInit {
       } catch (e) {
         console.error('Error parsing frutas:', e);
       }
+    }
+    const mediaTempStr = this.activatedRout.snapshot.paramMap.get('mediaTemp');
+    if (mediaTempStr) {
+      this.mediaTemp = parseFloat(mediaTempStr);
     }
   }
 

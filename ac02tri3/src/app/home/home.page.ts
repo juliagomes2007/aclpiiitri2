@@ -69,8 +69,8 @@ export class HomePage {
       4;
     frutas.forEach((fruta) => {
       if (
-        this.mediaTemp >+ fruta.temperaturaMin &&
-        this.mediaTemp <+ fruta.temperaturaMax
+        this.mediaTemp >= fruta.temperaturaMin &&
+        this.mediaTemp <= fruta.temperaturaMax
       ) {
         this.frutasParaPlantar.push(fruta);
       }
@@ -78,6 +78,7 @@ export class HomePage {
   }
 
     mudaTela(){
-      this.router.navigate(['/tela-frutas', { frutas: JSON.stringify(this.frutasParaPlantar) }]);
+      this.verificaFrutas(this.frutas);
+      this.router.navigate(['/tela-frutas', { frutas: JSON.stringify(this.frutasParaPlantar), mediaTemp: this.mediaTemp }]);
     }
 }
